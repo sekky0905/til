@@ -18,6 +18,13 @@
 参考
 [Goのruneを理解するためのUnicode知識 - Qiita](https://qiita.com/seihmd/items/4a878e7fa340d7963fee)
 
+## Goでの文字コード
+
+- GoはUTF-8で文字列を扱う。
+- `string` に `len` をすると、文字列数ではなく、バイト数が取得できる
+
+参考: [golangで日本語（マルチバイト）の文字列を数える - Qiita](https://qiita.com/reiki4040/items/b82bf5056ee747dcf713)
+
 ## Goで文字コードを変換する
 
 以下の記事のコードを参考に[書いてみた](https://play.golang.org/p/O0Cb-usczQx)が、Shift Jisへ絵文字を変換すると空文字になる。
