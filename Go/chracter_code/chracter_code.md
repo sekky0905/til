@@ -23,6 +23,8 @@
 - GoはUTF-8で文字列を扱う。
 - `string` に `len` をすると、文字列数ではなく、バイト数が取得できる
     - Goでstringの文字数を数える時には、runeで数えるというのが必要
+    - sliceみたいに `s[:3]` みたいなことしたい時には、 `string(rune[](s))` みたいな感じでやる
+        - `s[:3]` だとbyte単位でのカウントで区切ってしまう
 
 参考: [golangで日本語（マルチバイト）の文字列を数える - Qiita](https://qiita.com/reiki4040/items/b82bf5056ee747dcf713)
 
