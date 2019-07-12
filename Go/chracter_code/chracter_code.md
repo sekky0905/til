@@ -30,9 +30,9 @@
 
 ## Goで文字コードを変換する
 
-以下の記事のコードを参考に[書いてみた](https://play.golang.org/p/O0Cb-usczQx)が、Shift Jisへ絵文字を変換すると空文字になる。
-絵文字が空文字になる理由は、Shift Jisが使用している[符号化文字集合](https://ja.wikipedia.org/wiki/JIS_X_0208)では、絵文字は表中に定義されていないため。
-Shift Jisでも絵文字を表示できたりするのは、表の空き領域に[外字](https://ja.wikipedia.org/wiki/%E5%A4%96%E5%AD%97)である絵文字を定義して使用しているから。
+- 以下の記事のコードを参考に[書いてみた](https://play.golang.org/p/O0Cb-usczQx)が、絵文字等の変換先エンコーディングに対応がない文字があると、 `rune not supported by encoding.` のエラーを返す
+    - 絵文字がエラーになる理由は、Shift Jisが使用している[符号化文字集合](https://ja.wikipedia.org/wiki/JIS_X_0208)では、絵文字は表中に定義されていないため
+    - Shift Jisでも絵文字を表示できたりする場合は、表の空き領域に[外字](https://ja.wikipedia.org/wiki/%E5%A4%96%E5%AD%97)である絵文字を定義して使用しているから
 
 参考
 [Go言語で文字コード変換 - Qiita](https://qiita.com/uchiko/items/1810ddacd23fd4d3c934)
