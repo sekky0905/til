@@ -73,3 +73,11 @@
 
 参考: [AWS Organizations の用語と概念 - AWS Organizations](https://docs.aws.amazon.com/ja_jp/organizations/latest/userguide/orgs_getting-started_concepts.html)
 [AWS Organizationsによるマルチアカウント戦略とその実装 - クラウドワークス エンジニアブログ](https://engineer.crowdworks.jp/entry/2018/07/17/103453)
+
+
+参考: [AWS導入前に知っておきたかった「AWSアカウント設計」 - Qiita](https://qiita.com/takuya_tsurumi/items/cbeeeaa1e3a87c679f81)
+
+# 実際に使うとしたら
+
+- まず、AWSアカウントを
+[AWS導入前に知っておきたかった「AWSアカウント設計」 - Qiita](https://qiita.com/takuya_tsurumi/items/cbeeeaa1e3a87c679f81)
