@@ -39,3 +39,9 @@
         - これが成功した場合、clientは、serverA だと思って serverBの public keyでserverBとやりとりをしてしまうので、serverAに送るつもりだったものをserverBが取得し、severBのprivate keyで複合することができてしまう
     - しかし、client側がserverAの正しいpublic keyを記録しておき(known_hosts)、serverAにアクセスする度にpublic keyがserverAのものかを確認することで、clientはserverAだと思ってserverBにアクセスすることはなくなる
  
+
+### Host keyの設定
+
+- server側の `sshd_config` ファイルの  `HostKey`  の項目にhost keyで使用するprivate keyの場所を記述することで指定する(public keyでの指定も可能)
+
+[sshd_config(5) - OpenBSD manual pages](https://man.openbsd.org/sshd_config#HostKey)
