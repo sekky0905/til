@@ -1,11 +1,11 @@
 # VPC エンドポイント
 
-# 前段の話
+## 前段の話
 
 - そもそもの話としてS3等はVPC外
 - よって、VPCエンドポイントを使用せずにS3に繋ぐには一旦インターネットに出ていく必要がある
 
-# VPCエンドポイント
+## VPCエンドポイント
 
 - Direct Connectを使用せずに[PrivateLink](https://aws.amazon.com/jp/privatelink/) を使用するAWSサービスやVPCエンドポイントサービスにVPCをプライベートに接続できる
     - 例えば、VPCエンドポイントを使用せずにprivate subnet上のEC2インスタンスがS3にアクセスしたい時には、NAT等を使用してインターネットアクセスする必要があった
