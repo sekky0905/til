@@ -17,3 +17,9 @@
 - [【新機能】S3がVPCのプライベートサブネットからアクセス可能になりました！ ｜ DevelopersIO](https://dev.classmethod.jp/cloud/vpc-endpoint-for-s3/)
 - [AWSでS3を使う場合は必ずVPCエンドポイントも作成しておくクセをつけましょう。 | 株式会社ビットクリア](https://www.bitclear.co.jp/vpcendpoint/)
 - [【新機能】S3がVPCのプライベートサブネットからアクセス可能になりました！ ｜ DevelopersIO](https://dev.classmethod.jp/cloud/vpc-endpoint-for-s3/)
+
+## Private Link
+
+- AWS PrivateLinkを資料すると、インターネットを経由することなくAWSのネットワーク内でVPC、AWSサービス、オンプレミスアプリケーションでプライベート接続が可能になる
+    - 参考: [AWS PrivateLink（AWS でホストされているサービスに安全にアクセス）| AWS](https://aws.amazon.com/jp/privatelink/)
+- 仕組みについては[ここ](https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/what-is-amazon-vpc.html#what-is-privatelink)を参照
