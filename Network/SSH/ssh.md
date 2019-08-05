@@ -12,9 +12,7 @@
 
 ### ユーザー認証
 
-#### Password認証
-
-#### 公開鍵認証
+- [インフラエンジニアじゃなくても押さえておきたいSSHの基礎知識 - Qiita](https://qiita.com/tag1216/items/5d06bad7468f731f590e#ssh%E3%81%AE%E8%AA%8D%E8%A8%BC%E6%96%B9%E5%BC%8F)がわかりやすいので参照
 
 ### ホスト認証
 
