@@ -1,7 +1,72 @@
 # Goでcsv
 
 - 基本的には、[Go言語でCSVの読み書き(sjis、euc、utf8対応) - Qiita](https://qiita.com/kesuzuki/items/202cc58db3fd1763c095)に書いてあるような感じでやればok
-- ダブルクォーテションをつけたい場合には注意が必要
-- 個々の要素にダブルクォーテーションを付与し、 `encoding/csv` を使用した場合、 `""""hoge"""` のような形で出力されてしまう( `"hoge"` としたい)
-    - これは `RFC 4180` の仕様によるところらしい
-        - 参考: [Strange CSV result for quoted strings in go encoding/csv - Stack Overflow](https://stackoverflow.com/questions/20459038/strange-csv-result-for-quoted-strings-in-go-encoding-csv)
+
+## ダブルクォーテーション (`"`) について
+
+### RFC側
+
+- 各要素が `"` で囲まれているかもしれないし、囲まれていないかもしれない
+> Each field may or may not be enclosed in double quotes
+- 各要素を `"` で囲む場合には、要素中の `"` は、 `"` を重ねてエスケープする
+> If double-quotes are used to enclose fields, then a double-quote appearing inside a field must be escaped by preceding it with another double quote
+
+引用元: [RFC 4180 - Common Format and MIME Type for Comma-Separated Values (CSV) Files](https://tools.ietf.org/html/rfc4180)
+
+### encoding/csv
+
+- 以下のような振る舞い
+    - 要素内に `"` が存在する場合
+        - その要素を `"` で囲むパターンで返してくる(エスケープも行われる)
+    - 要素内に `"` が存在しない場合
+        - その要素を `"` で囲まないパターンで返してくる
+    - 要素内に `"` がないのに各要素を `"` で囲むパターンができない
+
+#### 実際のコード
+
+```go
+package main
+
+import (
+	"encoding/csv"
+	"fmt"
+	"os"
+)
+
+func main() {
+	out := os.Stdout
+
+	records := [][]string{
+		[]string{`a1`, `b1`},
+		[]string{`"a2`, `b2`},
+		[]string{`a3`, `"b3`},
+		[]string{`a4"`, `b4`},
+		[]string{`a5`, `b5"`},
+		[]string{`"a6"`, `b6`},
+		[]string{`"a7"`, `"b7`},
+		[]string{`"a8"`, `"b8"`},
+	}
+
+	w := csv.NewWriter(out)
+
+	for _, record := range records {
+		if err := w.Write(record); err != nil {
+			fmt.Printf("error has occurred. %+v", err)
+		}
+		w.Flush()
+	}
+}
+```
+
+#### 実行結果
+
+```
+a1,b1
+"""a2",b2
+a3,"""b3"
+"a4""",b4
+a5,"b5"""
+"""a6""",b6
+"""a7""","""b7"
+"""a8""","""b8"""
+```
