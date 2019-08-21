@@ -11,39 +11,30 @@ import (
 	"context"
 	"fmt"
 	"time"
-
-	"github.com/pkg/errors"
 )
 
-func main() {
+func Work(ctx context.Context) {
+	fmt.Println("work is called")
+	fmt.Println("start do any heavy process")
+	time.Sleep(3 * time.Second)
+	fmt.Println("end do any heavy process")
+}
+
+func Call() {
 	ctx := context.Background()
-	r, err := Call(ctx)
-	fmt.Printf("r = %+v, err = %+v", r, err)
-}
+	ctx, cancel := context.WithTimeout(ctx, time.Second)
+	defer cancel()
 
-func Call(ctx context.Context) (int, error) {
-	fmt.Println("== Call is called ===")
-	c, deadline := context.WithTimeout(ctx, time.Second*1)
-
-	defer deadline()
-
-	return Work(c)
-}
-func Work(ctx context.Context) (int, error) {
-	fmt.Println("== Work is called ===")
-
-	time.Sleep(time.Second * 2)
-	fmt.Println("== Do anything heavy process ===")
+	go Work(ctx)
 
 	select {
 	case <-ctx.Done():
-		if err := ctx.Err(); err != nil {
-			return 0, errors.Wrap(err, "timeout error")
-		}
-		return 1, nil
-	default:
-		return 2, nil
+		fmt.Println("timeout:", ctx.Err())
 	}
+}
+
+func main() {
+	Call()
 }
 
 ```
@@ -51,9 +42,57 @@ func Work(ctx context.Context) (int, error) {
 ### 結果
 
 ```
-== Call is called ===
-== Work is called ===
-== Do anything heavy process ===
-r = 0, err = context deadline exceeded
-timeout error
+work is called
+start do any heavy process
+timeout: context deadline exceeded
+```
+
+### 注意点
+
+呼び出す関数を goroutine で呼び出さないと、その関数がブロックしてしまい、関数が完了するまで select にたどり着かない
+そのため、全部完了してから select で Done されるという意味のない状態になる
+
+#### 実装例
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"time"
+)
+
+func Work(ctx context.Context) {
+	fmt.Println("work is called")
+	fmt.Println("start do any heavy process")
+	time.Sleep(3 * time.Second)
+	fmt.Println("end do any heavy process")
+}
+
+func Call() {
+	ctx := context.Background()
+	ctx, cancel := context.WithTimeout(ctx, time.Second)
+	defer cancel()
+
+	Work(ctx)
+
+	select {
+	case <-ctx.Done():
+		fmt.Println("timeout:", ctx.Err())
+	}
+}
+
+func main() {
+	Call()
+}
+```
+
+#### 結果
+
+```
+work is called
+start do any heavy process
+end do any heavy process
+timeout: context deadline exceeded
 ```
