@@ -54,18 +54,8 @@ func TestGetUsers(t *testing.T) {
 
 
 			got := GetUsers()
-			opt := cmp.Comparer(func(x, y []User) bool {
-				nx, ny := len(x), len(y)
-				if nx != ny {
-					return false
-				}
-
-				for i := 0; i < nx; i++ {
-					if x[i].ID!= y[i].ID || x[i].Name != y[i].Name || x[i].Age != y[i].Age  {
-						return false
-					}
-				}
-				return true
+			opt := cmp.Comparer(func(x, y User) bool {
+				return x.ID == y.ID && x.Name == y.Name &&x.Age == y.Age
 			})
 
 			if diff := cmp.Diff(got, tt.want, opt); diff != "" {
