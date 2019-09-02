@@ -19,5 +19,5 @@ SELECT @@system_time_zone, @@global.time_zone, @@time_zone;
 
 ## 参考
 
-[time_zone設定の違うMySQLのレプリケーションについて - 角待ちは対空](https://blog.yux3.net/entry/2018/12/02/182113)
-[MySQLのタイムゾーン - @tmtms のメモ](https://tmtms.hatenablog.com/entry/2015/08/22/mysql-timezone)
+- [time_zone設定の違うMySQLのレプリケーションについて - 角待ちは対空](https://blog.yux3.net/entry/2018/12/02/182113)
+- [MySQLのタイムゾーン - @tmtms のメモ](https://tmtms.hatenablog.com/entry/2015/08/22/mysql-timezone)
