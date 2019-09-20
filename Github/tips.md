@@ -9,4 +9,4 @@
 
 - diffをとるときには、以下のようにする
     - [Git で変更を patch ファイルにする / patch コマンドで適用する - Qiita](https://qiita.com/sea_mountain/items/7d9c812e68a26bd1a292)
-- `diff.patch` の中身をコピーして、issue等に ```patch という形でシンタックスハイライトで書こうと、綺麗に diff が表示される
+- `diff.patch` の中身をコピーして、issue等に ` ```patch` という形でシンタックスハイライトで書こうと、綺麗に diff が表示される
