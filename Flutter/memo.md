@@ -17,6 +17,8 @@
 
 - `build` メソッドを利用する
     - この中で `Widgets` を定義していく
+    - `build` メソッドの第一引数は、 `BuildContext`
+        - `Widget Tree` での `Widget` の位置情報を伝える
 
 ## Scaffold Class
 
