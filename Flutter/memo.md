@@ -13,6 +13,11 @@
 - Web で言う所の Component みたいなもの
 - 参考: [Introduction to widgets - Flutter](https://flutter.dev/docs/development/ui/widgets-intro)
 
+### Widgets のレンダリング
+
+- `build` メソッドを利用する
+    - この中で `Widgets` を定義していく
+
 ## Scaffold Class
 
 > Implements the basic material design visual layout structure.
