@@ -6,6 +6,13 @@
     - iOS のデザイン用の Widgets もないわけではない
     - `Cupertino*` 系の Widgets がそれにあたる
 
+## Widgets 
+
+- UI の部品の単位
+- この Widgets を積み重ねて UI を作成していく
+- Web で言う所の Component みたいなもの
+- 参考: [Introduction to widgets - Flutter](https://flutter.dev/docs/development/ui/widgets-intro)
+
 ## Scaffold Class
 
 > Implements the basic material design visual layout structure.
