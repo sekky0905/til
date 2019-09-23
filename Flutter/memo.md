@@ -19,6 +19,15 @@
     - この中で `Widgets` を定義していく
     - `build` メソッドの第一引数は、 `BuildContext`
         - `Widget Tree` での `Widget` の位置情報を伝える
+        
+### Widgets 状態
+
+- `Widgets` は `immutable`
+
+#### StatelessWidgets 
+
+- ユーザーとおインタラクティブなやりとりを担当しない `Widgets` のこと 
+- 独自の `StatelessWidgets` を定義する際には、[StatelessWidget class](https://api.flutter.dev/flutter/widgets/StatelessWidget-class.html)を `extends` する必要がある
 
 ## Scaffold Class
 
