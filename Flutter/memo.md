@@ -1,5 +1,11 @@
 # Flutter のメモ
 
+## Flutter のデザイン
+
+- [Material Design](https://material.io/design/)
+    - iOS のデザイン用の Widgets もないわけではない
+    - `Cupertino*` 系の Widgets がそれにあたる
+
 ## Scaffold Class
 
 > Implements the basic material design visual layout structure.
