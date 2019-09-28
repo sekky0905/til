@@ -29,6 +29,13 @@
 - ユーザーとおインタラクティブなやりとりを担当しない `Widgets` のこと 
 - 独自の `StatelessWidgets` を定義する際には、[StatelessWidget class](https://api.flutter.dev/flutter/widgets/StatelessWidget-class.html)を `extends` する必要がある
 
+#### StatefulWidgets
+
+- `StatefulWidgets` を `extends` した `class` は、 `immutable`
+- `State` を `extends` したインスタンスの `createState` を使用する
+
+
+
 ## Scaffold Class
 
 > Implements the basic material design visual layout structure.
