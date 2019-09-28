@@ -42,3 +42,6 @@
     - 異なる点として、クライアントからサーバにデータを送信する際には、単純な DTO の送信ではなく、ユーザーが何をしたいかという意図もメッセージとして送信する
 
 
+### 参考
+
+- [CQRS Documents by Greg Young](http://www.minato.tv/cqrs/cqrs_documents_jp.pdf)
