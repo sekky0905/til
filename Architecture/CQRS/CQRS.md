@@ -80,7 +80,7 @@ func NewDeactivateInventoryItemCommand(id InventoryItemID, comment string) *Deac
             - Relocating the Customer（顧客の再配置)
         - 一般的に、コマンドとユースケースを整理し、ユースケースとコマンドの定義を同時に行うのが最適
 
-#### User Interface
+### User Interface
 
 - コマンドオブジェクトを構築する必要があるのでユーザの意図がユーザのアクションに由来したものとなるよう UI を設計する
     - 「タスクベース・ユーザーインタフェース(Microsoft 界の「帰納的UI」)
@@ -97,8 +97,80 @@ func NewDeactivateInventoryItemCommand(id InventoryItemID, comment string) *Deac
                 - プロセスを導く
                 - コンテキストに敏感に沿う形で適切な方向に導く手引きを提供する
         
-  
-  
+### コマンドクエリ債務分離
+
+- CQRS
+    - CQRSでは以下の2種類にオブジェクトを分類する
+        - コマンドを持つオブジェクト
+        - クエリを持つオブジェクト
+    - ex)
+        - 従来のアーキテクチャの例
+            - 
+            ```
+            CustomerService
+            void MakeCustomerPreferred(CustomerId)
+            Customer GetCustomer(CustomerId)
+            CustomerSet GetCustomersWithName(Name)
+            CustomerSet GetPreferredCustomers()
+            void ChangeCustomerLocale(CustomerId, NewLocale)
+            void CreateCustomer(Customer)
+            void EditCustomerDetails(CustomerDetails)
+            ```
+        - 
+            - CQRS の例
+            ```
+            CustomerWriteService
+            void MakeCustomerPreferred(CustomerId)
+            void ChangeCustomerLocale(CustomerId, NewLocale)
+            void CreateCustomer(Customer)
+            void EditCustomerDetails(CustomerDetails)
+
+            CustomerReadService
+            Customer GetCustomer(CustomerId)
+            CustomerSet GetCustomersWithName(Name)
+            ```
+                - 以下の2種類が存在することがわかる
+                    - 書き出し側(コマンド側)
+                    - 読み込み側(クエリ側)
+        - 上記の例は、[CQRS Documents by Greg Young](http://www.minato.tv/cqrs/cqrs_documents_jp.pdf)から引用
+    - 各々の比較
+    
+    | 種類 | コマンド | クエリ |
+    |---|---|---|
+    | 一貫性 | 強整合性のトランザクション処理の方が簡単  | 最終的には首尾一貫した処理が可能 |
+    | データストレージ | DBのため、正規化したデータを格納することが好まれる  | 非正規化したデータ一式を取得するのが好まれる |
+    | スケーラビリティ | 少ない、スケーラビリティ重要でない  | 多い、スケーラビリティ重要 |    
+    
+    
+#### クエリ側
+
+- クライアントが画面に表示するために必要な DTO を取得するメソッドを持つだけ
+- クライアントに返却する DTO は
+    - クライアントの画面にマッチする DTO を返す
+        - 往復の送受信を少なくする
+    - DTO モデルはトランザクションの表現や処理を行うため
+        - ドメインモデルとは違う
+            - ドメインモデルは、オブジェクトモデルでクエリを処理し、データモデルに変換するので最適化が難しい
+- CQRS では
+    - 経路を明確に分離する
+    - DTO を投影するためのドメインが不要になる
+    - クエリ側では
+        - ドメインを使わずに迂回する
+        - 「Thin Read Layer（薄い読み取り層）」を導入
+            - データベースから直接読み込み、DTO に投影する
+            - Thin Read Layer は、データベースから分離する必要はない
+- コマンドとクエリの分離を行うと
+    - 同一データモデルからの読み込みにこの 2 つ
+     を混在させるべきかどうか、または、2 つの統合化システムとして扱うかという議論を喚起します。
+     概要を図12 に示します。一貫
+     した方法で複数のデータソース間を同期化するための有名な「統合パターン」が多くあります
+
+#### コマンド側
+
+- コマンド側は、ステレオタイプなアーキテクチャに似ている
+    - データの読み込み(クエリ側)を分離している点が異なる
+- 一貫した方法で複数のデータソース間を同期化するための「統合パターン」
+      
 ### 参考
 
 - [CQRS Documents by Greg Young](http://www.minato.tv/cqrs/cqrs_documents_jp.pdf)
