@@ -41,7 +41,64 @@
         - ユーザーとインタラクティブなやりとりが続く
     - 異なる点として、クライアントからサーバにデータを送信する際には、単純な DTO の送信ではなく、ユーザーが何をしたいかという意図もメッセージとして送信する
 
+#### Commands
 
+- サーバが何をするかを伝える方法として用いる
+- 処理に必要なデータと、処理の名前を持つ簡易なオブジェクト
+- コマンドを「シリアライズ化を行うメソッドの呼び出しとみなす場合も多い
+- 以下の例は、[CQRS Documents by Greg Young](http://www.minato.tv/cqrs/cqrs_documents_jp.pdf)に記載されていたコードを Go で書き換えてみた
+
+```go
+type DeactivateInventoryItemCommand struct {
+    InventoryItemID InventoryItemID
+    Comment string
+}
+
+// constructor の代わり
+func NewDeactivateInventoryItemCommand(id InventoryItemID, comment string) *DeactivateInventoryItemCommand {
+    return &DeactivateInventoryItemCommand {
+    	InventoryItemID: id,
+    	Comment: comment,
+    }
+}
+```
+
+- コマンド名の後にパターン名がある
+- 命名方法には賛否両輪あって、軽視するべきものではない
+- 常に命令口調
+    - 命令口調ということは、サーバは拒否することもできる
+    - 拒否できなければ、それはイベント
+    - 命令は動詞
+    - 目的語が含まれているべき
+    - クライアントには、命令が完了した旨の情報を伝えるべき
+    - ふるまいの処理に必要な情報だけを持つべき
+    - コマンドにはステートを更新する際に対象を指定するための ID が必要
+        - コマンドを生成するときは、必ずしも ID に値が格納されている必要はない
+    - コマンドの命名を行う時には、使用場面に焦点を当てる必要がある
+        - ex) 以下のような違いはないか?
+            - Correcting an Address（住所の修正）
+            - Relocating the Customer（顧客の再配置)
+        - 一般的に、コマンドとユースケースを整理し、ユースケースとコマンドの定義を同時に行うのが最適
+
+#### User Interface
+
+- コマンドオブジェクトを構築する必要があるのでユーザの意図がユーザのアクションに由来したものとなるよう UI を設計する
+    - 「タスクベース・ユーザーインタフェース(Microsoft 界の「帰納的UI」)
+        - 演繹的なUIの問題点
+            - ユーザは、
+                - インタフェースによるナビゲーションを導くのに十分な完全かつ正確なメンタルモデルを取得していない
+                - 一般的な手順をマスターしない
+                - 機能や画面を理解するのが困難である
+        - タスクベース UI の基本的な考え方
+            - ユーザがどのようにソフトウェアを使いたいのかを把握すること
+            - プロセスを通して使用方法を導くこと
+        - タスクベース・ユーザーインタフェースは
+            - ユーザがソフトウェアをなぜ、どのように使用しているのかに焦点を当てる
+                - プロセスを導く
+                - コンテキストに敏感に沿う形で適切な方向に導く手引きを提供する
+        
+  
+  
 ### 参考
 
 - [CQRS Documents by Greg Young](http://www.minato.tv/cqrs/cqrs_documents_jp.pdf)
