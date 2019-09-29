@@ -170,7 +170,75 @@ func NewDeactivateInventoryItemCommand(id InventoryItemID, comment string) *Deac
 - コマンド側は、ステレオタイプなアーキテクチャに似ている
     - データの読み込み(クエリ側)を分離している点が異なる
 - 一貫した方法で複数のデータソース間を同期化するための「統合パターン」
-      
+
+### ストレージメカニズムにおけるイベント
+    
+#### ドメインイベントとは
+
+- イベントとは、過去に発生した事柄
+    - イベントは過去形の動詞で表す
+- イベントをコードのすると以下のような感じ
+- 以下の例は、[CQRS Documents by Greg Young](http://www.minato.tv/cqrs/cqrs_documents_jp.pdf)に記載されていたコードを Go で書き換えてみ    
+
+```go
+type InventoryItemDeactivatedEvent struct {
+    InventoryItemID InventoryItemID
+    Comment string
+}
+
+func NewInventoryItemDeactivatedEvent(id InventoryItemID, comment string)*InventoryItemDeactivatedEvent{
+    return &InventoryItemDeactivatedEvent{
+    	    InventoryItemID: id,
+            Comment: comment, 
+    }
+}
+```
+
+- コマンドとイベントの違い
+    - コマンド
+        - システムに対し、処理を実行するように依頼する意図がある
+    - イベント
+        - 発生したアクションを記録するもの
+
+#### 削除するものはない
+
+- リバーサルトランザクション
+    - イベントストリーム上で、`Add X` → `Remove X` というようなことを行ったとする
+        - この場合、最初のイベント( `Add X` )をなかったことにするために、 新しいデータ ( `Remove X` )をつい買うする
+            - 上記の処理がリバーサルトランザクション
+- データの削除を行わない利点
+    - ストレージに対するアーキテクチャが「追加」だけになる
+        - `append-only` アーキテクチャ
+        - 更新処理よりも簡単
+        - 更新処理にはロックが必要だが、追加処理にはロックが不要だから
+
+#### パフォーマンスとスケーラビリティ
+
+- `append-only` モデルでは
+    - イベントの格納はスケーリングが簡単
+    - 性能の利点
+- RDB で水平パーテション分割を行う際の問題点の1つが、水平パーテション分割のためのキーの定義
+    - イベントでは、 `Aggregate IDs` がシステムにおける唯一のパーテションポイント
+    
+#### オブジェクトのロード
+
+- RDB を利用するステレオタイプなシステムでは、オブジェクトをロードする際にはアグリゲートを構築するために大量のクエリの発行が必要
+- ストレージメカニズムとしてイベントに対処する際には、格納するのはイベント
+    - アグリゲートでは単純に全てのイベントをロードして再生する
+
+#### スナップショットの巻き戻し
+
+- Rolling Snapshot
+    - その時点のアグリゲートの現在のステートを非正規化したもの
+    - 全てのイベントがその時点までに再生した時のステートを表す
+    - アグリゲートの完全n履歴を取得するには全てのイベントをロードする必要がある
+        - それを回避するために `Rolling Snapshot` を使用する
+    - イベントがあるスタックをイベントがなくなるかスナップショットが見つかるまで逆方向に読み込む
+        - スナップショットが見つかればそれを適用する
+        - イベントはスタックが空になるまでスタックかr取り出して適用する 
+
+ 
+ 
 ### 参考
 
 - [CQRS Documents by Greg Young](http://www.minato.tv/cqrs/cqrs_documents_jp.pdf)
