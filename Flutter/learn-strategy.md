@@ -49,6 +49,10 @@
  
 - [InheritedWidget を完全に理解する 🎯 - Flutter 🇯🇵 - Medium](https://medium.com/flutter-jp/inherited-widget-37495200d965)
 
+###### Provider
+
+- [[Flutter] package:provider の各プロバイダの詳細 - Qiita](https://qiita.com/kabochapo/items/a90d8438243c27e2f6d9)
+
 ##### Scoped Model
 
 - [Scoped Modelの基本的な使い方（Flutter） - Qiita](https://qiita.com/hayassh/items/690fa0d6528e056617b5)
