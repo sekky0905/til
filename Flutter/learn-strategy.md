@@ -20,6 +20,21 @@
 
 ## Flutter
 
+### 基礎系
+
+#### ざっくり全般
+
+- [Flutter Guide JP | Flutter Doc JP](https://flutter.ctrnost.com/)
+
+#### レイアウト
+
+- [Flutter Layout Cheat Sheet - Flutter Community - Medium](https://medium.com/flutter-community/flutter-layout-cheat-sheet-5363348d037e)
+
+#### Widget 一覧系
+
+- [Flutter開発する前に知っておきたい35のWidget一覧 - Qiita](https://qiita.com/coka__01/items/dedb569f6357f1b503fd)
+- [Flutter:Widget一覧 - Qiita](https://qiita.com/matsukatsu/items/e289e30231fffb1e4502)
+
 
 ### 応用系
 
