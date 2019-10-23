@@ -34,8 +34,6 @@
 - `StatefulWidgets` を `extends` した `class` は、 `immutable`
 - `State` を `extends` したインスタンスの `createState` を使用する
 
-
-
 ## Scaffold Class
 
 > Implements the basic material design visual layout structure.
@@ -48,3 +46,8 @@
 drawers、snack bars、bottom sheets 向けのAPIを提供している
 
 引用元: [Scaffold class - material library - Dart API](https://api.flutter.dev/flutter/material/Scaffold-class.html)
+
+## Multi-Child Layout Widgets
+
+- Widgets をネストさせたり組み合わせて使用する
+- Row と Column を使用する
