@@ -15,7 +15,40 @@
     - Render で表示できるのは、1つの Element だけ
     - 第一級オブジェクトとして使用できる
 
-           
+
+## Chapter3
+
+## Chapter4 Redux で値を管理しよう
+
+- 状態管理用のライブラリ
+    - vuex みたいなもの
+- Redux の仕組み
+    - Store 
+        - データの保管庫
+        - ここで保管されるデータは State と呼ばれる
+    - Provider
+        - Store を Component に受け渡すためのもの
+    - Reducer 
+        - Store 内の State を変更するためのもの
+            - vuex で言うところの Mutation みたいなもの
+
+- Redux の使用
+    - connect 
+        - Provider の中に Component を組み込んで Component で Store を使用する
+        - connect で Component に Store を接続する
+            - `connect(設定)(Component)` といった形
+            - ここでの設定は、state から Component で使用するデータを絞って返すこ関数を渡す
+                - connect で渡される state は Component の this.props に組み込まれる
+    - doAction
+        - doAction メソッドに this をバインド
+        - JSX 側で onClick とかのイベントに this.doAction を紐付け、Component の JavaScript 側で doAction のメソッドを定義する
+            - 上記のようにすることで、イベント発火時に doAction で定義したメソッドが実行されるようになる
+    - Action
+        -  state を変更する際に行うことに関する情報が詰まった Object
+        - type と言うプロパティを持ち、これによって Reducer の処理が分岐する
+    - Dispatch 
+        - doAction 内で `this.props.dispatch(action)` といった形で呼び出される
+        - dispatch が呼び出されて、Action が送信されると、 Store の Reducer が呼び出されて、処理が分岐し、必要な処理が実行される
 
 
 ## 参考文献
