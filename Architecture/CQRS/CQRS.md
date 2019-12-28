@@ -172,7 +172,6 @@ func NewDeactivateInventoryItemCommand(id InventoryItemID, comment string) *Deac
 - 一貫した方法で複数のデータソース間を同期化するための「統合パターン」
 
 ### ストレージメカニズムにおけるイベント
-<<<<<<< HEAD
 
 #### ドメインイベントとは
 
@@ -271,8 +270,6 @@ func NewInventoryItemDeactivatedEvet(id InventoryItemID, comment Comment) *Inven
     - 「何が発生したか」ではなく「どのように発生したか」
         - イベントではこれを参照できる
 
-=======
-    
 #### ドメインイベントとは
 
 - イベントとは、過去に発生した事柄
@@ -337,9 +334,7 @@ func NewInventoryItemDeactivatedEvent(id InventoryItemID, comment string)*Invent
         - スナップショットが見つかればそれを適用する
         - イベントはスタックが空になるまでスタックかr取り出して適用する 
 
- 
- 
->>>>>>> 58730df5fef4d8e4a234354a934d2e76c4c9b450
+
 ### 参考
 
 - [CQRS Documents by Greg Young](http://www.minato.tv/cqrs/cqrs_documents_jp.pdf)
