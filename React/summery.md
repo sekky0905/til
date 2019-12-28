@@ -31,6 +31,10 @@
     - Reducer 
         - Store 内の State を変更するためのもの
             - vuex で言うところの Mutation みたいなもの
+        - `action.type` 毎に条件分岐を行い、それに結びついた `ReduceAction` を呼び出す
+        - ReduceAction 
+            - `Reducer` から呼び出される具体的な処理を行う関数
+            - 必ず新しい `State` を返す
 
 - Redux の使用
     - connect 
@@ -46,6 +50,8 @@
     - Action
         -  state を変更する際に行うことに関する情報が詰まった Object
         - type と言うプロパティを持ち、これによって Reducer の処理が分岐する
+    - Action Creator
+        - `dispatch` の際に引数として渡す `Action` を作成する関数
     - Dispatch 
         - doAction 内で `this.props.dispatch(action)` といった形で呼び出される
         - dispatch が呼び出されて、Action が送信されると、 Store の Reducer が呼び出されて、処理が分岐し、必要な処理が実行される
