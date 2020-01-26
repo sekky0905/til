@@ -1,5 +1,16 @@
 # GraphQL まとめ
 
+## メモ
+
+### オペレーションの定義とクエリ(query ではなく、オペレーションへの指示という意味で)
+
+- Mutation みたいな大文から始まるやつは、ルートのオペレーション型
+    - つまりオペレーションの定義
+    - この Mutation type の field にオペレーションを定義する
+- mutation みたいな小文字から始まるやつは、クエリ
+    - つまり、Mutation で定義したオペレーションへの指示
+- 参考: [「GraphQL」徹底入門 ─ RESTとの比較、API・フロント双方の実装から学ぶ - エンジニアHub｜若手Webエンジニアのキャリアを考える！](https://employment.en-japan.com/engineerhub/entry/2018/12/26/103000)
+
 ## Reference
 
 ### 全般系
