@@ -92,3 +92,7 @@ h.Bar("hoge") => 同じ
 x.Bar("foo") => 違う
 x.Bar("hoge") => 同じ
 ```
+
+## Functional Option Pattern 
+
+[Go言語のFunctional Option Pattern - Qiita](https://qiita.com/weloan/items/56f1c7792088b5ede136)
