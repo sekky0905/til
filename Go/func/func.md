@@ -95,4 +95,69 @@ x.Bar("hoge") => 同じ
 
 ## Functional Option Pattern 
 
-[Go言語のFunctional Option Pattern - Qiita](https://qiita.com/weloan/items/56f1c7792088b5ede136)
+### 実装してみた
+
+以下を参考に実装してみた
+- [Go言語のFunctional Option Pattern - Qiita](https://qiita.com/weloan/items/56f1c7792088b5ede136)
+- [Functional Option Pattern](https://blog.web-apps.tech/go-functional-option-pattern/)
+
+[実際の実装](https://play.golang.org/p/irKBjK9F-J7)
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type Hoge struct {
+	Foo string
+	Bar string
+}
+
+func NewHoge(options ...func(*Hoge)) *Hoge {
+	hoge := &Hoge{}
+
+	for _, option := range options { // 可変長引数で受け取った、Hoge のフィールドを設定する各種関数を range で回し、実行する
+		option(hoge) // ポインタなので、各々関数で hoge のフィールドに設定
+	}
+	return hoge // 設定した hoge を返す
+}
+
+func Foo(foo string) func(*Hoge) { // これはあくまでも関数を返すだけで、内部の関数の実行までは行わない
+	return func(h *Hoge) { // 関数を返す
+		h.Foo = foo
+	}
+}
+
+func Bar(bar string) func(*Hoge) { // これはあくまでも関数を返すだけで、内部の関数の実行までは行わない
+	return func(h *Hoge) { // 関数を返す
+		h.Bar = bar
+	}
+}
+
+func main() {
+	h1 := NewHoge(Foo("foo"), Bar("bar"))
+	fmt.Printf("h1 = %+v\n", h1)
+
+	h2 := NewHoge(Foo("foo"))
+	fmt.Printf("h2 = %+v\n", h2)
+
+	h3 := NewHoge(Bar("bar"))
+	fmt.Printf("h3 = %+v\n", h3)
+}
+
+```
+
+### 実行結果
+
+```
+h1 = &{Foo:foo Bar:bar}
+h2 = &{Foo:foo Bar:}
+h3 = &{Foo: Bar:bar}
+```
+
+### 参考
+
+- [Go言語のFunctional Option Pattern - Qiita](https://qiita.com/weloan/items/56f1c7792088b5ede136)
+- [Functional Option Pattern](https://blog.web-apps.tech/go-functional-option-pattern/)
