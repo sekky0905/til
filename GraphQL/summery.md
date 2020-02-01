@@ -16,6 +16,7 @@
 - GraphQL はあくまでも Query Language
     - クライアントから送信されてくるクエリが `syntax error` の場合以外は、エラーなく返すべき
         - DB と SQL 的な考え方
+        - REST API は RPC で GraphQL は Query Language だと考えるとそもそも何がエラーなのかという考えが異なる
 - 参考: [GraphQLサーバをGo言語で作る - わかめの自動売り場 - BOOTH](https://booth.pm/ja/items/1055228)
 
 ## クライアント側のクエリってどういう風に考えるのか
