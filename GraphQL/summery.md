@@ -11,6 +11,15 @@
     - つまり、Mutation で定義したオペレーションへの指示
 - 参考: [「GraphQL」徹底入門 ─ RESTとの比較、API・フロント双方の実装から学ぶ - エンジニアHub｜若手Webエンジニアのキャリアを考える！](https://employment.en-japan.com/engineerhub/entry/2018/12/26/103000)
 
+
+## クライアント側のクエリってどういう風に考えるのか
+
+- 各々の Component が自分に必要なデータを [Fragment](https://qiita.com/k-boy/items/079d1d4418dc11863a0e) として定義して、上位の Component に渡す
+
+- 参考: [GraphQLサーバをGo言語で作る - わかめの自動売り場 - BOOTH](https://booth.pm/ja/items/1055228)
+
+
+
 ## Reference
 
 ### 全般系
