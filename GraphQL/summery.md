@@ -29,8 +29,7 @@
 ## クライアント側のクエリってどういう風に考えるのか
 
 - 各々の Component が自分に必要なデータを [Fragment](https://qiita.com/k-boy/items/079d1d4418dc11863a0e) として定義して、上位の Component に渡す
-
-- 参考: [GraphQLサーバをGo言語で作る - わかめの自動売り場 - BOOTH](https://booth.pm/ja/items/1055228)
+    - 参考: [GraphQLサーバをGo言語で作る - わかめの自動売り場 - BOOTH](https://booth.pm/ja/items/1055228)
 
 
 
