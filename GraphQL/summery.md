@@ -11,6 +11,12 @@
     - つまり、Mutation で定義したオペレーションへの指示
 - 参考: [「GraphQL」徹底入門 ─ RESTとの比較、API・フロント双方の実装から学ぶ - エンジニアHub｜若手Webエンジニアのキャリアを考える！](https://employment.en-japan.com/engineerhub/entry/2018/12/26/103000)
 
+## エラーについての考え方
+
+- GraphQL はあくまでも Query Language
+    - クライアントから送信されてくるクエリが `syntax error` の場合以外は、エラーなく返すべき
+        - DB と SQL 的な考え方
+- 参考: [GraphQLサーバをGo言語で作る - わかめの自動売り場 - BOOTH](https://booth.pm/ja/items/1055228)
 
 ## クライアント側のクエリってどういう風に考えるのか
 
