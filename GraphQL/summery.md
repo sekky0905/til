@@ -43,6 +43,8 @@
 
 - [はじめてのGraphQLスキーマ設計 - Speaker Deck](https://speakerdeck.com/rikuson298/hazimetefalsegraphqlsukimashe-ji)
 - [GraphQL API設計で気をつけること - Qiita](https://qiita.com/wawoon/items/e24398af912d9f3e0389)
+- [GraphQLサーバをGo言語で作る - わかめの自動売り場 - BOOTH](https://booth.pm/ja/items/1055228)
+- [GraphQLスキーマ設計ガイド - わかめの自動売り場 - BOOTH](https://booth.pm/ja/items/1576562)
 
 ### GraphQL with Go
 
