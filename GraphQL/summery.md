@@ -35,6 +35,14 @@
 
 - 定義された関係を任意の深さまで取得することができる
     - 参考: [GraphQLスキーマ設計ガイド - わかめの自動売り場 - BOOTH](https://booth.pm/ja/items/1576562)
+    
+## Resolver の考え方
+
+- 各々の要素に対する Resolver の集合が、Query への Resolver になる
+- Scheme に対して、全部の要素に Resolver を用意する必要はない( name, age にそれぞれ Resolver を定義するみたいな)
+    - 別データの ID に対しては、その ID から別データに変換んするような Resolver は必要
+        - ex) `Hoge.FooID` に対しては、 `FooID` を受け取り、 `Foo` のデータを取得してくる `Resolver` が必要
+    - 参考: [GraphQLスキーマ設計ガイド - わかめの自動売り場 - BOOTH](https://booth.pm/ja/items/1576562)
 
 ## Reference
 
