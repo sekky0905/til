@@ -5,3 +5,9 @@
 ```bash
 git branch | grep 'draft.*' | xargs git branch -D
 ```
+
+## grep + 無視
+
+```bash
+grep -rn 'target' . | grep -v 'ignore target'
+```
