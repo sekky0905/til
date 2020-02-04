@@ -1,9 +1,17 @@
 # よく使うコマンドまとめ
 
-## Draft の prefix が存在する branch を一括削除したい
+## 特定の branch 以外の削除
+
+### Draft の prefix が存在する branch を一括削除したい
 
 ```bash
 git branch | grep 'draft.*' | xargs git branch -D
+```
+
+### master 以外削除
+
+```bash
+git branch | grep -v 'master' | xargs git branch -D
 ```
 
 ## grep + 無視
