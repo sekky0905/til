@@ -11,3 +11,7 @@ git branch | grep 'draft.*' | xargs git branch -D
 ```bash
 grep -rn 'target' . | grep -v 'ignore target'
 ```
+
+## 連続してコマンド実行系
+
+- [Linuxコマンドを連続して使うには - Qiita](https://qiita.com/egawa_kun/items/714394609eef6be8e0bf)
