@@ -51,3 +51,7 @@ c
 ```
 
 参考: [switch文 - Wikipedia](https://ja.wikipedia.org/wiki/Switch%E6%96%87#%E3%83%95%E3%82%A9%E3%83%BC%E3%83%AB%E3%82%B9%E3%83%AB%E3%83%BC)
+
+## ディレクトリ構成のスタンダード 
+
+- [Goにはディレクトリ構成のスタンダードがあるらしい。 - Qiita](https://qiita.com/sueken/items/87093e5941bfbc09bea8)
