@@ -13,3 +13,8 @@
 
 - [Redux入門【ダイジェスト版】10分で理解するReduxの基礎 - Qiita](https://qiita.com/kitagawamac/items/49a1f03445b19cf407b7)
 - [React+Redux入門 - Qiita](https://qiita.com/erukiti/items/e16aa13ad81d5938374e)
+
+## Redux-saga
+
+- [公式日本語README](https://github.com/redux-saga/redux-saga/blob/master/README_ja.md)
+- [redux-sagaで非同期処理と戦う - Qiita](https://qiita.com/kuy/items/716affc808ebb3e1e8ac)
