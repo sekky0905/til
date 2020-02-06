@@ -18,3 +18,7 @@
 
 - [公式日本語README](https://github.com/redux-saga/redux-saga/blob/master/README_ja.md)
 - [redux-sagaで非同期処理と戦う - Qiita](https://qiita.com/kuy/items/716affc808ebb3e1e8ac)
+
+### Generator 関数
+
+- [JavaScript の ジェネレータ を極める！ - Qiita](https://qiita.com/kura07/items/d1a57ea64ef5c3de8528)
