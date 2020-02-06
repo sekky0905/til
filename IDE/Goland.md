@@ -87,6 +87,10 @@
 ## Plant UML
 [PlantUML integration - Plugins | JetBrains](https://plugins.jetbrains.com/plugin/7017-plantuml-integration)
 
+## Rest Client 
+
+- [Intellijのeditor-based Rest Clientをおためし - Qiita](https://qiita.com/U_UU/items/2efbe23156e5ec860bed)
+
 # 参考にさせていただいた記事
 [GoLand: A Clever IDE to Go by JetBrains](https://www.jetbrains.com/go/?fromMenu)
 
