@@ -20,6 +20,12 @@ git branch | grep -v 'master' | xargs git branch -D
 grep -rn 'target' . | grep -v 'ignore target'
 ```
 
+## Shell 再起動
+
+```bash
+exec $SHELL -l
+```
+
 ## 連続してコマンド実行系
 
 - [Linuxコマンドを連続して使うには - Qiita](https://qiita.com/egawa_kun/items/714394609eef6be8e0bf)
