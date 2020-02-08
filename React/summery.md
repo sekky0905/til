@@ -9,6 +9,14 @@
 
 - [なぜ仮想DOMという概念が俺達の魂を震えさせるのか - Qiita](https://qiita.com/mizchi/items/4d25bc26def1719d52e6)
 
+## Create-React-App
+
+### with ts
+
+```bash
+npx create-react-app {app_name} --typescript
+```
+
 ## React/Redux
 
 - [Redux入門【ダイジェスト版】10分で理解するReduxの基礎 - Qiita](https://qiita.com/kitagawamac/items/49a1f03445b19cf407b7)
