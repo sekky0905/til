@@ -38,3 +38,7 @@ npx create-react-app {app_name} --typescript
 ### Generator 関数
 
 - [JavaScript の ジェネレータ を極める！ - Qiita](https://qiita.com/kura07/items/d1a57ea64ef5c3de8528)
+
+## Component の種類
+
+- Functional Component と Class Component と言う分け方とは別に Presentational Component と Class Component がある
