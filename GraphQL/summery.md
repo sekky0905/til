@@ -44,6 +44,10 @@
         - ex) `Hoge.FooID` に対しては、 `FooID` を受け取り、 `Foo` のデータを取得してくる `Resolver` が必要
     - 参考: [GraphQLスキーマ設計ガイド - わかめの自動売り場 - BOOTH](https://booth.pm/ja/items/1576562)
 
+## URL の設計
+
+- GraphQL サーバへのアクセスは単一エンドポイントで、Query でデータの取得を行うが、SPA の場合フロントエンド側で表示する URL については従来のような表示の仕方を取り得ることは大いにあり得る 
+
 ## Reference
 
 ### 全般系
