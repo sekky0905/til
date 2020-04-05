@@ -91,6 +91,10 @@
 
 - [Intellijのeditor-based Rest Clientをおためし - Qiita](https://qiita.com/U_UU/items/2efbe23156e5ec860bed)
 
+## 大文字/小文字
+
+`Command + Shift + u`
+
 # 参考にさせていただいた記事
 [GoLand: A Clever IDE to Go by JetBrains](https://www.jetbrains.com/go/?fromMenu)
 
