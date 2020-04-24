@@ -70,4 +70,7 @@
 - [Building GraphQL servers in golang — gqlgen](https://gqlgen.com/getting-started/)
 - [Go + gqlgenを使ったGraphQLアプリケーションサーバーの実装 | MF KESSAI TECH BLOG](https://tech.mfkessai.co.jp/2018/08/go-gqlgen-graphql/)
 
+### Dataloader 
+
+- [GraphQL と N+1 SQL 問題と dataloader - Qiita](https://qiita.com/yuku_t/items/2c1735cbf45e75c0bfb8)
 
