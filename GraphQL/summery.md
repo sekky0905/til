@@ -73,4 +73,5 @@
 ### Dataloader 
 
 - [GraphQL と N+1 SQL 問題と dataloader - Qiita](https://qiita.com/yuku_t/items/2c1735cbf45e75c0bfb8)
-
+- gqlgen での実装
+    [Optimizing N+1 database queries using Dataloaders — gqlgen](https://gqlgen.com/reference/dataloaders/)
