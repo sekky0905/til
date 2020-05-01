@@ -25,6 +25,7 @@ npx create-react-app {app_name} --typescript
 
 - [Redux入門【ダイジェスト版】10分で理解するReduxの基礎 - Qiita](https://qiita.com/kitagawamac/items/49a1f03445b19cf407b7)
 - [React+Redux入門 - Qiita](https://qiita.com/erukiti/items/e16aa13ad81d5938374e)
+- [TypeScriptでReactをやるときは、小さいアプリでもReduxを最初から使ってもいいかもねというお話 | Future Tech Blog - フューチャーアーキテクト](https://future-architect.github.io/articles/20200501/)
 
 ## Redux-saga
 
