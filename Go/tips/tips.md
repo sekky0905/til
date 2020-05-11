@@ -55,3 +55,7 @@ c
 ## ディレクトリ構成のスタンダード 
 
 - [Goにはディレクトリ構成のスタンダードがあるらしい。 - Qiita](https://qiita.com/sueken/items/87093e5941bfbc09bea8)
+
+## Enum の関数
+
+- [4 iota enum examples · YourBasic Go](https://yourbasic.org/golang/iota/)
