@@ -9,3 +9,54 @@
 ```go
 var hoge = (*Hoge)(nil)
 ```
+
+## Exists
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type Hoge struct {
+}
+
+func (h *Hoge) Exists() bool {
+	return h != nil
+}
+
+func (h *Hoge) Foo1() {
+	fmt.Printf("h.Exists = %t @Foo1\n", h.Exists())
+}
+
+func (h Hoge) Foo2() {
+	fmt.Printf("h.Exists = %t @Foo2\n", h.Exists())
+}
+
+func main() {
+	var h *Hoge
+	call1(h)
+
+}
+
+func call1(h *Hoge) {
+	h.Foo1()
+	h.Foo2()
+}
+
+```
+
+### 結果
+
+```
+h.Exists = false @Foo1
+panic: runtime error: invalid memory address or nil pointer dereference
+[signal SIGSEGV: segmentation violation code=0x1 addr=0x0 pc=0x492f90]
+
+goroutine 1 [running]:
+main.call1(0x0)
+	/tmp/sandbox813117633/prog.go:30 +0x30
+main.main()
+	/tmp/sandbox813117633/prog.go:24 +0x2a
+```
