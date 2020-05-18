@@ -59,3 +59,23 @@ c
 ## Enum の関数
 
 - [4 iota enum examples · YourBasic Go](https://yourbasic.org/golang/iota/)
+
+## buffer
+
+```go
+package main
+
+import (
+	"bytes"
+	"fmt"
+)
+
+func main() {
+	var buf bytes.Buffer
+
+	buf.WriteString("a")
+	buf.WriteString("b")
+
+	fmt.Println(buf.String())
+}
+``` 
