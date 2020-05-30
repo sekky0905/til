@@ -161,3 +161,39 @@ h3 = &{Foo: Bar:bar}
 
 - [Go言語のFunctional Option Pattern - Qiita](https://qiita.com/weloan/items/56f1c7792088b5ede136)
 - [Functional Option Pattern](https://blog.web-apps.tech/go-functional-option-pattern/)
+
+## 引数としての関数にメソッドを割り当てる
+
+### 実装してみた
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type Foo struct {
+	Field string
+}
+
+func (f Foo) Method(arg string) string {
+	return f.Field + arg
+}
+
+func Func(method func(arg string) string) {
+	fmt.Println(method("test"))
+}
+
+func main() {
+	f := Foo{Field: "x"}
+	Func(f.Method)
+}
+```
+
+### 実行結果
+
+```
+xtest
+```
+
