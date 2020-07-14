@@ -60,3 +60,54 @@ main.call1(0x0)
 main.main()
 	/tmp/sandbox813117633/prog.go:24 +0x2a
 ```
+
+## Exists2
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+type X interface {
+	Exists() bool
+}
+
+type xImp struct {
+}
+
+func (x *xImp) Exists() bool {
+	return x != nil
+}
+
+func NewX() X {
+	return &xImp{}
+}
+
+func NewXNil() X {
+	return nil
+}
+
+func main() {
+	x := NewX()
+	Hoge(x)
+
+	var x2 *xImp
+	fmt.Printf("x2 = %+v\n", x2)
+	Hoge(x2)
+}
+
+func Hoge(x X) {
+	fmt.Println(x.Exists())
+}
+
+```
+
+### 結果
+
+```
+true
+x2 = <nil>
+false
+```
