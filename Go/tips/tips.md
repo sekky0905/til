@@ -78,4 +78,30 @@ func main() {
 
 	fmt.Println(buf.String())
 }
+```
+
+## 空の構造体はメモリを消費しない
+
+### コード
+
+```go
+package main
+
+import (
+	"fmt"
+	"unsafe"
+)
+
+func main() {
+	fmt.Println(unsafe.Sizeof(struct{}{}))
+	fmt.Println(unsafe.Sizeof(true))
+}
+
+```
+
+### 実行結果
+
+```
+0
+1
 ``` 
