@@ -104,4 +104,8 @@ func main() {
 ```
 0
 1
-``` 
+```
+
+## iota
+
+[golang の iota の使い所 - pospomeのプログラミング日記](https://www.pospome.work/entry/2017/08/20/153604) 
