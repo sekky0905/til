@@ -108,4 +108,56 @@ func main() {
 
 ## iota
 
-[golang の iota の使い所 - pospomeのプログラミング日記](https://www.pospome.work/entry/2017/08/20/153604) 
+[golang の iota の使い所 - pospomeのプログラミング日記](https://www.pospome.work/entry/2017/08/20/153604)
+
+## Constructor内でのバリデーション
+
+以下のようなパターンはあまり好ましくない。
+生成時のルールが追加されたときに、ガードのロジックがむき出しになると、この関数の保守性が下がっていくから。
+
+```go
+type Name string
+
+func NewName(name string) (Name, error) {
+
+	s := string(n)
+	if utf8.RuneCountInString(s) > 10 {
+		return "", errors.New("invalid lenmgth")
+	}
+
+	return Name(name), nil
+}
+
+```
+
+以下のようにメソッドに切り出しちゃうのが良い
+
+```go
+package main
+
+import (
+	"errors"
+	"fmt"
+	"unicode/utf8"
+)
+
+type Name string
+
+func NewName(name string) (Name, error) {
+	n := Name(name)
+
+	if err := n.validateLength(); err != nil {
+		return "", err
+	}
+
+	return n, nil
+}
+
+func (n Name) validateLength() error {
+	s := string(n)
+	if utf8.RuneCountInString(s) > 10 {
+		return errors.New("invalid lenmgth")
+	}
+	return nil
+}
+```
