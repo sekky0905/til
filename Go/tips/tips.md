@@ -130,7 +130,7 @@ func NewName(name string) (Name, error) {
 
 ```
 
-以下のようにメソッドに切り出しちゃうのが良い
+以下のように仕様オブジェクトに切り出しちゃうのが良い
 
 ```go
 package main
@@ -144,20 +144,26 @@ import (
 type Name string
 
 func NewName(name string) (Name, error) {
-	n := Name(name)
+	n := nameValidator(name)
 
 	if err := n.validateLength(); err != nil {
 		return "", err
 	}
 
-	return n, nil
+	return Name(n.string()), nil
 }
 
-func (n Name) validateLength() error {
+type nameValidator string
+
+func (n nameValidator) validateLength() error {
 	s := string(n)
 	if utf8.RuneCountInString(s) > 10 {
 		return errors.New("invalid lenmgth")
 	}
 	return nil
+}
+
+func (n nameValidator) string() string {
+	return string(n)
 }
 ```
