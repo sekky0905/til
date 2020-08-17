@@ -70,3 +70,13 @@ a5,"b5"""
 """a7""","""b7"
 """a8""","""b8"""
 ```
+
+## CSV読み込む処理が入ったメソッドのテストがしたい
+
+- データストリームを変換する
+strings.NewReader > csv.NewReader 
+
+```go
+ s := `ここにcsvの文字列を書く`
+ r := csv.NewReader(strings.NewReader(s))
+```
