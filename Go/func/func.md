@@ -197,3 +197,39 @@ func main() {
 xtest
 ```
 
+## 可変長引数に引数を渡さない時
+
+- 何も渡さない時には、受け取る側は空のSliceになる
+
+### 実装
+
+```go
+package main
+
+import "fmt"
+
+type Struct struct {
+	Name string
+}
+
+type Slice []Struct
+
+func (s Slice) Append(v ...Struct) Slice {
+	fmt.Printf("v = %+v\n", v)
+	return append(s, v...)
+}
+
+func main() {
+	s := Slice{}
+	// 何も渡さない時には、受け取る側は空のSliceになる
+	s.Append()
+	fmt.Printf("s = %+v\n", s)
+}
+```
+
+### 結果
+
+```
+v = []
+s = []
+```
