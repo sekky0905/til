@@ -111,3 +111,70 @@ true
 x2 = <nil>
 false
 ```
+
+## 存在しているか?
+
+### 実装
+
+```go
+package main
+
+import (
+	"fmt"
+	"reflect"
+)
+
+type Hoge struct {
+	Name string
+}
+
+func (h *Hoge) Exists() bool {
+	return h != nil
+}
+
+func (h *Hoge) Empty() bool {
+	if !h.Exists() {
+		return true
+	}
+
+	return reflect.DeepEqual(*h, Hoge{})
+}
+
+func main() {
+	np := NotPointer()
+	fmt.Printf("np.Exists() = %t\n", np.Exists())
+	fmt.Printf("np.Empty() = %t\n", np.Empty())
+
+	p := Pointer()
+	fmt.Printf("p.Exists() = %t\n", p.Exists())
+	fmt.Printf("p.Empty() = %t\n", p.Empty())
+
+	nip := NilPointer()
+	fmt.Printf("nip.Exists() = %t\n", nip.Exists())
+	fmt.Printf("nip.Empty() = %t\n", nip.Empty())
+}
+
+func NotPointer() Hoge {
+	return Hoge{}
+}
+
+func Pointer() *Hoge {
+	return &Hoge{}
+}
+
+func NilPointer() *Hoge {
+	return nil
+}
+
+```
+
+### 結果
+
+```
+np.Exists() = true
+np.Empty() = true
+p.Exists() = true
+p.Empty() = true
+nip.Exists() = false
+nip.Empty() = true
+```
