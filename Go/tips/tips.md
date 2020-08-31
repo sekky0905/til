@@ -167,3 +167,9 @@ func (n nameValidator) string() string {
 	return string(n)
 }
 ```
+
+## package名と構造体の関係
+
+- package名についている名詞は構造体には付与しない
+    - 例えば、hoge packageには、hogeRaderではなくReaderで良い
+        - [標準ライブラリでもこんな感じになっている](https://golang.org/pkg/encoding/csv/#example_Reader)
