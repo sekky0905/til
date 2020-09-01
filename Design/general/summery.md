@@ -2,9 +2,12 @@
 
 ## 型でステータスを表す
 
-- 構造体のフィールドで状態を持って変更するのではなくて、そのステータスのオブジェクトを作成する
-- こうするとImmutableになる
-- 例えば順番を保証したい場合とかには、次のステータスを返すようなメソッドを作れば良い
+構造体のフィールドで状態を持って変更するのではなくて、そのステータスのオブジェクトを作成する
+こうするとImmutableになる
+例えば順番を保証したい場合とかには、次のステータスを返すようなメソッドを作れば良い
+
+こうすると、Mutableになっちゃう
+
 
 ```go
 type Hoge struct {
@@ -12,23 +15,20 @@ type Hoge struct {
    // ...
 }
 ```
+こうすると、Immutableになる(~Statusみたいな命名は微妙だけど、例がパッと思いつかなかったので)
 
 ```go
-
-func New()InitStatusHoge *InitStatusHoge {
-    return &InitStatusHoge{}
-}
-
 type InitStatusHoge struct {
    // ...
 }
 
-func (s InitStatusHoge)NextStatus()SecondStatusHoge *SecondStatusHoge {
-    return &SecondStatusHoge{}
+func NewInitStatusHoge() *InitStatusHoge {
+    return &InitStatusHoge{}
 }
 
-
-// SecondStatus は、名前的に微妙だけど...
+func (s InitStatusHoge)NextStatus() *SecondStatusHoge {
+    return &SecondStatusHoge{}
+}
 type SecondStatusHoge struct {
        // ...
 }
