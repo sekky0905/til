@@ -67,3 +67,27 @@ type Names struct {
 }
 ```
 
+## 多次元SliceのLen
+
+```go
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	s := [][]string{
+		[]string{"a"},
+		[]string{"b"},
+		[]string{"c", "d"},
+	}
+	fmt.Println(len(s))
+}
+```
+
+実行結果
+
+```
+3
+```
