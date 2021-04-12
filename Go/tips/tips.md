@@ -173,3 +173,46 @@ func (n nameValidator) string() string {
 - package名についている名詞は構造体には付与しない
     - 例えば、hoge packageには、hogeRaderではなくReaderで良い
         - [標準ライブラリでもこんな感じになっている](https://golang.org/pkg/encoding/csv/#example_Reader)
+        
+## 対になる処理をcallbackで処理する
+
+OpenとClose、StartとStop、CreateとRemove等の遂になる処理の場合、後処理を忘れないようにしたい。
+そのために、以下のように最初の処理(createSomething)をする関数の戻り値を締めの処理をする関数(removeSomething)という形にすると便利。
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	remove := create()
+	defer remove()
+	doSomething()
+}
+
+func create() func() {
+	createSomething()
+	return removeSomething
+}
+
+
+func createSomething()  {
+	fmt.Println("---createSomething--")
+}
+
+func removeSomething()  {
+	fmt.Println("---removeSomething--")
+}
+
+func  doSomething()  {
+	fmt.Println("---doSomething--")
+}
+```
+
+実行結果
+
+```go
+---createSomething--
+---doSomething--
+---removeSomething--
+```
