@@ -68,3 +68,51 @@ res
 done
 
 ```
+
+## sync.Once
+
+実装
+
+```go
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+var once sync.Once
+var hoge *Hoge
+
+type Hoge struct {
+	Name       string
+	FixedField string
+}
+
+func NewHoge() *Hoge {
+	once.Do(func() {
+		hoge = &Hoge{FixedField: "fixed"}
+	})
+	return hoge
+}
+
+func SetName(name string) {
+	h := NewHoge()
+	h.Name = name
+}
+
+func main() {
+	h := NewHoge()
+	fmt.Printf("h after NewHoge - %+v\n", h)
+	SetName("aaa")
+	fmt.Printf("h after SetName - %+v\n", h)
+}
+
+```
+
+結果
+
+```
+h after NewHoge - &{Name: FixedField:fixed}
+h after SetName - &{Name:aaa FixedField:fixed}
+```
