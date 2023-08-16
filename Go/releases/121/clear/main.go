@@ -22,6 +22,12 @@ func main() {
 
 	fmt.Println("---clear slice struct---")
 	ClearSliceStruct()
+
+	fmt.Println("---clear type parameter map---")
+	ClearTypeParameterMap()
+
+	fmt.Println("---clear type parameter slice---")
+	ClearTypeParameterSlice()
 }
 
 func ClearMap() {
@@ -149,6 +155,55 @@ func ClearSliceStruct() {
 	// lengthは3なので注意
 	fmt.Printf("len(p) = %v\n", len(p))
 	for i, v := range p {
+		fmt.Printf("index = %v, value = %v\n", i, v)
+	}
+}
+
+func ClearTypeParameterMap() {
+	m := map[string]string{"key1": "value1", "key2": "value2", "key3": "value3"}
+	clearTypeParameterMap(m)
+}
+
+func ClearTypeParameterSlice() {
+	s := []string{"foo", "bar", "baz"}
+	clearTypeParameterSlice(s)
+}
+
+func clearTypeParameterMap[T comparable](m map[T]T) {
+	fmt.Println("before clear")
+	fmt.Printf("m= %+v\n", m)
+	fmt.Printf("len(m) = %v\n", len(m))
+	for k, v := range m {
+		fmt.Printf("key = %v, value = %v\n", k, v)
+	}
+
+	fmt.Println()
+
+	clear(m)
+	fmt.Println("after clear")
+	fmt.Printf("m= %+v\n", m)
+	fmt.Printf("len(m) = %v\n", len(m))
+	for k, v := range m {
+		fmt.Printf("key = %v, value = %v\n", k, v)
+	}
+}
+
+func clearTypeParameterSlice[T comparable](s []T) {
+	fmt.Println("before clear")
+	fmt.Printf("s= %+v\n", s)
+	fmt.Printf("len(s) = %v\n", len(s))
+
+	for i, v := range s {
+		fmt.Printf("index = %v, value = %v\n", i, v)
+	}
+
+	fmt.Println()
+	clear(s)
+
+	fmt.Println("after clear")
+	fmt.Printf("s= %+v\n", s)
+	fmt.Printf("len(s) = %v\n", len(s))
+	for i, v := range s {
 		fmt.Printf("index = %v, value = %v\n", i, v)
 	}
 }
