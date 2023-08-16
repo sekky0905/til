@@ -7,12 +7,12 @@ import (
 
 func main() {
 	fmt.Println("---min and max behavior for basic pattern---")
-	CheckMinAndMaxBehaviorForBasicPattern()
+	MinAndMaxBehaviorForBasicPattern()
 	fmt.Println("---min and max behavior for extreme pattern---")
-	CheckMinAndMaxBehaviorForExtremePattern()
+	MinAndMaxBehaviorForExtremePattern()
 }
 
-func CheckMinAndMaxBehaviorForBasicPattern() {
+func MinAndMaxBehaviorForBasicPattern() {
 	// m == x
 	fmt.Printf("min(1) = %v\n", min(1))
 	// x と y のうち小さい方
@@ -36,7 +36,7 @@ func CheckMinAndMaxBehaviorForBasicPattern() {
 	fmt.Printf("max(\"\", \"foo\", \"bar\") = %v, type = %T \n", t, t)
 }
 
-func CheckMinAndMaxBehaviorForExtremePattern() {
+func MinAndMaxBehaviorForExtremePattern() {
 	//var s []string = []string{"foo", "bar", "baz"}
 	//_ = min(s...)              // 無効: スライスの引数は許可されていません
 
