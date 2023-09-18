@@ -21,3 +21,18 @@ https://react.dev/learn/thinking-in-react
 > But as the Web became more interactive, logic increasingly determined content. JavaScript was in charge of the HTML! This is why in React, rendering logic and markup live together in the same place—components.
 
 https://react.dev/learn/writing-markup-with-jsx
+
+## ReactのStateはimmutableであるべき
+
+### そもそものJavaScriptのデータ型のimmutable/mutable
+
+- string, number, boolean等のプリミティブ型はそもそもimmutableである
+- object, array等の複合型はmutableである
+
+### ReactのStateはimmutableであるべき
+
+- state setting functionを使わなければ、Reactはオブジェクトが変更されたことを検知できない 
+- レンダリングでアクセスできるステートの値は、読み取り専用として扱うべき
+- 再レンダリングをトリガーするには、新しいオブジェクトを作成してステートstate setting functionに渡す
+
+refs: https://react.dev/learn/updating-objects-in-state
